@@ -1,0 +1,48 @@
+
+    <link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+
+    <link
+      rel="stylesheet"
+      href="/css/settings.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/theme.css" />
+  </head>
+
+
+    <%- include('partials/header', { page: "Settings"}) %>
+    <main>
+      <%- include('partials/settingsnav', {page: "Theme"}) %>
+      <section id="theme-sect">
+        <% if( themes.length > 0){ %>
+          <% themes.forEach(theme => { %>
+            <button class="theme-btn <%= theme%>">
+              
+                <div>
+                  <p>
+                    <%= theme %>
+                  </p>
+                  
+                </div>
+                <div>
+                  <p>sub</p>
+                </div>
+              
+            </button>
+          <% }) %>
+      
+          <%} else {%>
+            <h2>No themes available...</h2>
+            <% } %>
+       
+      </section>
+    </main>
+    <%- include('partials/menu') %>
+    <script src="/js/theme.js" type="text/javascript" charset="utf-8"></script>

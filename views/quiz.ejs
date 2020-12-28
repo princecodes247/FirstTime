@@ -1,0 +1,27 @@
+<title>FirstTime - <%=person%>
+</title>
+</head>
+<%- include('partials/header', { Name: "FirstTime" }) %>
+  <div class="main">
+    <div class="container">
+      <div id="qbox">
+        <h4 id="q-no">Question #1</h4>
+        <p id="question">What's my full name</p>
+        <div class="input-cont" id="answer">
+          <input class="input" type="text" name="full-answer" id="full-answer" value="" required />
+          <label for="full-answer"></label>
+        </div>
+      </div>
+      <div id="qnav">
+        <div id="qnav-center">
+          <div id="pos">
+          </div>
+        </div>
+        <div id="qnav-btns">
+          <input type="submit" name="back" class="button" id="back" value="Back" />
+          <input type="submit" name="next" class="button" id="next" value="Next" />
+        </div>
+      </div>
+    </div>
+    <button id="submit" class="button lbtns">Submit</button>
+  </div>

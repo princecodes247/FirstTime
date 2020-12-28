@@ -1,0 +1,25 @@
+<title>FirstTime - Login</title>
+</head>
+
+<%- include('partials/header', { Name: "Login" }) %>
+  <div class="main">
+    <div class="container" id="form-con">
+      <h1>Login</h1>
+      <%- include('partials/messages') %>
+        <form class="form" action="/users/login" method="post" accept-charset="utf-8">
+          <div class="input-cont"><input type="text" class="input" id="username" name="username" required><label
+              for="username" id="userlabel">
+              <div></div>
+            </label></div>
+          <div class="input-cont"><input type="password" class="input" id="password" name="password" required><label
+              for="password" id="passlabel"></label></div>
+          <input type="submit" name="login" class="button lbtns" id="login" value="Login" />
+          <!-- <div id="scon">
+        <p>or</p>
+        <button type="submit" class="button lbtns"><a href="#">Sign Up</a></button>
+      </div> -->
+        </form>
+
+    </div>
+
+  </div>

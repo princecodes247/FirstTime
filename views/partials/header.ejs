@@ -1,0 +1,44 @@
+<body class="light">
+  <header>
+    <nav>
+      <div id="logo">
+        <h4>FirstTime</h4>
+      </div>
+      <div class="has-dropdown" id="menubtn">
+        <a href="#">
+          <div id="ncover2">
+            <div id="nav2">
+              <!--  <input type="checkbox" name="menu-checkbox2" id="menu-checkbox2" />-->
+              <div id="menu-label2">
+                <div id="menu-text2">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Menu-->
+        </a>
+        <ul class="dropdown">
+          <li class="dropdown-item" id="login">
+            <%if(Name==="Dashboard"){%>
+              <a href="/users/logout">Log Out</a>
+              <%}else if(Name==="Login" ){%>
+                <a href="/users/register">Sign Up</a>
+
+                <%}else {%>
+                  <a href="/users/login">Log in</a>
+                  <%}%>
+          </li>
+          <li class="dropdown-item" id="theme">
+            <a href="#">Theme
+              <ul id="dropdown2">
+                <li class="dropdown-item " onclick="event.stopPropagation(); themeSwitch(1)"><a href="#"
+                    id="dark">Dark</a></li>
+                <li class="dropdown-item" onclick="event.stopPropagation(); themeSwitch(0)"><a href="#"
+                    id="light">Light</a></li>
+              </ul>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>

@@ -1,0 +1,27 @@
+<title>FirstTime - Register</title>
+</head>
+
+<%- include('partials/header', { Name: "FirstTime" }) %>
+  <div class="main">
+    <div class="container" id="form-con">
+      <h1>Sign Up</h1>
+      <%- include('partials/messages') %>
+        <form class="form" action="/users/register" method="post" accept-charset="utf-8">
+          <div class="input-cont"><input type="text" class="input" id="username" name="username"
+              value="<%= typeof username != 'undefined' ? username : '' %>" required><label for="username"
+              id="userlabel">
+              <div></div>
+            </label></div>
+          <div class="input-cont"><input type="password" class="input" id="password" name="password"
+              value="<%= typeof password != 'undefined' ? password : '' %>" required><label for="password"
+              id="passlabel"></label></div>
+          <div class="input-cont"><input type="password" class="input" id="password2" name="password2"
+              value="<%= typeof password2 != 'undefined' ? password2 : '' %>" required><label for="password2"
+              id="passlabel2"></label></div>
+          <input type="submit" name="signup" class="button lbtns" id="signup" value="Submit" />
+
+        </form>
+
+    </div>
+
+  </div>

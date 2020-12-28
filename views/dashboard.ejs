@@ -1,0 +1,87 @@
+<title>FirstTime - Dashboard</title>
+</head>
+
+<%- include('partials/header', { Name: "Dashboard" }) %>
+    <div class="main">
+        <div id="userlink">
+            <span>
+                <p>Your Link: </p><a>
+                    <%=user.username%>
+                </a>
+            </span>
+            <button id="copyLink" class="button lbtns">Copy</button>
+        </div>
+        <h1>My messages</h1>
+
+        <div class="messages">
+            <%if(!user.messages.length==0){%>
+                <% user.messages.forEach(message=> { %>
+                    <div class="container message close-message">
+                        <span id="time-stamp">
+
+                            <% let time=Math.trunc((Date.now()-message.timeStamp)/1000)%>
+                                <% let minutes=Math.trunc(time/60)%>
+                                    <%let hours=Math.trunc(time/3600)%>
+                                        <%let days=Math.trunc(time/86400)%>
+
+                                            <%if(days > 0){%>
+
+                                                <%if(days===1){%>
+                                                    a day ago
+                                                    <%} else{%>
+                                                        <%=days%> days ago
+                                                    <%}%>
+
+                                                
+                                            <%} else if(hours> 0){%>
+                                                  <%if(hours===1){%>
+                                                    An hour ago
+                                                 <%}else{%>
+                                                    <%=hours%> hours ago%>
+                                                <%}%>
+                                            <%} else if(minutes > 0) {%>
+                                               
+                                                <%if(minutes===1){%>
+                                                    a minute ago
+                                                    <%}else if(minutes < 10){%>
+                                                        a few minutes ago
+                                                        <%}else{%>
+                                                            <%=minutes%> minutes ago%>
+                                                                <%}%>
+
+                                            <%} else {%>
+                                                <%if(time===1){%>
+                                                    a second ago
+                                                <%}else if(time < 10){%> 
+                                                    a few seconds ago 
+                                                    <%}else{%> 
+                                                        <%=time%> seconds ago
+                                                        <%}%> 
+                                                        <%}%>
+
+
+                        </span>
+                        <span class="open-btn">Open</span>
+                        <% message.questionList.forEach(question=> { %>
+                            <span class="question">
+                                <p>
+                                    <b>Question:</b>
+                                    <%= question.question %>
+                                </p>
+
+                                <p>
+                                    <b>Answer:</b>
+                                    <%= question.answer %>
+                                </p>
+
+                            </span>
+                            <% }) %>
+                    </div>
+                    <% }) %>
+                        <%} else {%>
+                            No messages yet...
+                            <%}%>
+        </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>

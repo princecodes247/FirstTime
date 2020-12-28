@@ -1,0 +1,12 @@
+{
+  "name": "firsttime",
+  "version": "1.0.0",
+  "description": "Bringing back memories",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prince Gbalam",
+  "license": "ISC"
+}

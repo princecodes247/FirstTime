@@ -3,8 +3,22 @@ const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 const User = require("../models/User");
 
+
+
+
 // Welcome Page
 router.get("/", forwardAuthenticated, (req, res) => res.render("welcome"));
+
+router.get("/stats", (req, res) => {
+  User.countDocuments()
+    .then(userCount => {
+
+      res.render("stats", {
+        userCount
+      })
+    })
+    .catch(err => console.log(err))
+});
 
 //User Quiz
 router.get("/user/:username", (req, res) => {
@@ -46,6 +60,7 @@ router.post("/user/:username", (req, res) => {
 router.get("/login", forwardAuthenticated, (req, res) => res.redirect("/users/login"));
 
 
+
 // Dashboard
 router.get("/dashboard", ensureAuthenticated, (req, res) =>
   res.render("dashboard", {
@@ -53,9 +68,8 @@ router.get("/dashboard", ensureAuthenticated, (req, res) =>
   })
 );
 
+
 //404
-router.get("/*", forwardAuthenticated, (req, res) => res.render("404"));
-
-
+// router.get("/*", (req, res) => res.render("404"));
 
 module.exports = router;

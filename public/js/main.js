@@ -163,7 +163,12 @@ next.addEventListener('click', () => {
   questionChanger(1)
 })
 submit.addEventListener('click', () => {
+  container.style.display = 'none'
+  submit.style.display = 'none'
 
+  let word = document.createElement('h2')
+  word.innerText = "Answers sent successfully now it's your turn"
+  main.appendChild(word)
   fetch(userUrl, {
     method: 'POST',
     body: JSON.stringify({
@@ -174,14 +179,9 @@ submit.addEventListener('click', () => {
       'content-type': 'application/json'
     }
   })
-    .then(response => response.json())
-    .then(data => {
-      container.style.display = 'none'
-      submit.style.display = 'none'
-      let word = document.createElement('h2')
-      word.innerText = data.message
-      main.appendChild(word)
-
+    .then(response => {
+      console.log(response);
+      window.location.replace(`${window.location.origin}/users/register`)
     })
     .catch(err => console.log(err))
 

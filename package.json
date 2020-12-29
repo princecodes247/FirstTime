@@ -10,6 +10,7 @@
     "cloudinary": "^1.23.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.13.3",

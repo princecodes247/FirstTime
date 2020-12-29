@@ -333,7 +333,7 @@ nav {
   background: var(--s-color);
   border-radius: 4px;
   transition: clip-path 1s;
-
+  position: relative;
   clip-path: circle(100%);
 }
 .container h1 {
@@ -546,6 +546,12 @@ div.main.submit > #submit {
 #userlink {
   margin-bottom: 10px;
 }
+
+.messages {
+  height: 100%;
+  padding-top: 20px;
+}
+
 .message {
   text-align: left;
   margin: 10px auto 10px auto;
@@ -564,6 +570,7 @@ div.main.submit > #submit {
   top: 10px;
   content: "Open";
   font-size: 0.8em;
+  cursor: pointer;
 }
 #time-stamp {
   position: relative;

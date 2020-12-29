@@ -58,6 +58,8 @@ router.post("/user/:username", (req, res) => {
 });
 
 router.get("/login", forwardAuthenticated, (req, res) => res.redirect("/users/login"));
+router.get("/register", forwardAuthenticated, (req, res) => res.redirect("/users/register"));
+router.get("/signup", forwardAuthenticated, (req, res) => res.redirect("/users/register"));
 
 
 

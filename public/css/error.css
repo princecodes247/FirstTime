@@ -1,0 +1,38 @@
+.alert {
+  position: absolute;
+  background: var(--d-gray-blue);
+  padding: 25px 20px;
+  border: var(--border);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: -27px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: all 1s;
+}
+
+.fade {
+  animation: 1s fade 2s both;
+}
+
+@-webkit-keyframes fade {
+  to {
+    clip-path: circle(0);
+  }
+}
+@keyframes fade {
+  0% {
+    clip-path: circle(300%);
+  }
+  80% {
+    padding: 32px;
+    clip-path: circle(0%);
+  }
+  100% {
+    clip-path: circle(0%);
+    padding: 0;
+    min-height: 0;
+  }
+}

@@ -53,7 +53,8 @@ router.get("/dashboard", ensureAuthenticated, (req, res) =>
   })
 );
 
-
+//404
+router.get("/*", forwardAuthenticated, (req, res) => res.render("404"));
 
 
 

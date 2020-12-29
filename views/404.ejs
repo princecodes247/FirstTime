@@ -1,8 +1,14 @@
 <title>FirstTime</title>
 </head>
 
-<%- include('partials/header', { Name: "FirstTime" }) %>
-
-  Not found
-
-  <a href="/register">Sign up here</a>
+  <%- include('partials/header', { Name: "404" }) %>
+  <div class="main">
+    <div class="bg-circle"></div>
+    <div class="bg-circle smaller"></div>
+    <h1>404</h1>
+  <h3>Not found</h3>
+  <div>
+    <a  href="/login" class="button rbtns">Log in</a>
+    <a href="/register" class="button lbtns">Signup</a>
+  </div>
+  </div>

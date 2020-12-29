@@ -61,6 +61,29 @@ body {
   transition: background 500ms ease, color 300ms ease;
 }
 
+/* For the circle in the background */
+.bg-circle {
+  background-color: var(--p-high);
+  position: absolute;
+  top: -40%;
+  left: -50%;
+  width: 400px;
+  height: 400px;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.4;
+}
+
+.bg-circle.smaller {
+  left: unset;
+  right: -10%;
+  top: unset;
+  bottom: 30%;
+  width: 200px;
+  height: 200px;
+}
+
 /*
  ---    MENU BUTTON   --- */
 #ncover2 {
@@ -219,9 +242,20 @@ body {
 }
 
 .button {
+  appearance: button;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
   padding: 10px 15px;
   border: none;
   font-size: 16px;
+  text-align: center;
   background: var(--p-high);
   border-radius: 6px;
   outline: none;
@@ -232,6 +266,18 @@ body {
 
 .lbtns {
   width: 7em;
+}
+
+.rbtns {
+  position: relative;
+  top: 0px;
+  width: 7em;
+  background-color: transparent;
+  border: 2px solid var(--p-high);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* NAVIGATION BAR */
@@ -257,14 +303,15 @@ nav {
 
 .main {
   position: relative;
-  min-height: 80vh;
-
+  min-height: 78vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
   padding: 10px;
   align-items: center;
+  overflow: hidden;
 }
 .form {
   display: flex;
@@ -459,10 +506,12 @@ a {
   color: var(--text-color);
 }
 .footer {
-  max-height: 10vh;
+  height: 12vh;
   text-align: center;
   display: flex;
   flex-direction: column;
+  background: var(--p-color);
+  padding-top: 10px;
 }
 
 .s-icon {

@@ -550,6 +550,8 @@ div.main.submit > #submit {
 .messages {
   height: 100%;
   padding-top: 20px;
+  display: flex;
+  flex-direction: column-reverse
 }
 
 .message {
@@ -562,7 +564,7 @@ div.main.submit > #submit {
   transition: all 1s;
   transform-origin: bottom;
   min-height: 0;
-  max-height: 1040px;
+  max-height: 1440px;
 }
 .open-btn {
   position: absolute;

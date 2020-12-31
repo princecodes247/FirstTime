@@ -82,6 +82,7 @@ body {
   bottom: 30%;
   width: 200px;
   height: 200px;
+  opacity: 0.1;
 }
 
 /*
@@ -544,12 +545,61 @@ div.main.submit > #submit {
 }
 
 #userlink {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
+  align-items: center;
+  width: 70%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+#userlink > span {
+  margin-bottom: 15px;
+}
+#userlink a {
+  word-break: break-all;
 }
 
+#friendy-words {
+  position: relative;
+  min-height: 1em;
+  min-width: 85px;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 0.8em;
+  margin: 0;
+  top: 0.3em;
+  transition: 0.5s;
+  /* text-align: left; */
+}
+
+#friendy-words h3 {
+  text-transform: capitalize;
+}
+
+#friendy-words h3::first-letter {
+  text-transform: uppercase;
+  text-decoration: overline;
+  color: var(--p-high);
+}
+.friendy-cover {
+  position: absolute;
+  display: block;
+  background: var(--p-high);
+  width: 150px;
+  height: 100%;
+  min-height: 1em;
+  transform: translateX(-105%);
+  transition: all 1s;
+}
+.cover {
+  transform: translateX(0%);
+}
 .messages {
   height: 100%;
   padding-top: 20px;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .message {
@@ -562,7 +612,7 @@ div.main.submit > #submit {
   transition: all 1s;
   transform-origin: bottom;
   min-height: 0;
-  max-height: 1040px;
+  max-height: 1440px;
 }
 .open-btn {
   position: absolute;

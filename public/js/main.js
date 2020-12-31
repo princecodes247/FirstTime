@@ -1,6 +1,5 @@
 //   Variables
 const userUrl = window.location.href;
-console.log(userUrl);
 const qNo = document.getElementById('q-no');
 const question = document.getElementById('question');
 const menubtn = document.getElementById('menubtn');
@@ -38,7 +37,6 @@ const dd1 = document.getElementsByClassName('dropdown');
 const dd2 = document.getElementById('dropdown2');
 function dd(close) {
   themeOpen = !(themeOpen) && close;
-  console.log(themeOpen);
   if (themeOpen) {
     dd2.style.height = "90px";
     dd2.style.pointerEvents = "auto";
@@ -52,7 +50,6 @@ function dd(close) {
 function mo(close) {
   // body...
   menuOpen = !(menuOpen) && close;
-  console.log(menuOpen);
   if (menuOpen) {
     dd1[0].style.opacity = "1";
     dd1[0].style.pointerEvents = "auto"
@@ -180,7 +177,6 @@ submit.addEventListener('click', () => {
     }
   })
     .then(response => {
-      console.log(response);
       window.location.replace(`${window.location.origin}/users/register`)
     })
     .catch(err => console.log(err))

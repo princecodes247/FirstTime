@@ -3,17 +3,21 @@ let userLinkCont = document.querySelector('#userlink')
 let copyLink = document.querySelector('#copyLink')
 let userLink = userLinkCont.querySelector('a')
 let userName = userLink.innerText
-userLink.innerText = `${window.location.origin}/user/${userName}`
-userLink.href = `${window.location.origin}/user/${userName}`
+userLink.innerText = `${window.location.origin}/user/${encodeURIComponent(userName)}`
+userLink.href = `${window.location.origin}/user/${encodeURIComponent(userName)}`
 // To implement the copy function
 copyLink.addEventListener('click', () => {
     let dummy = document.createElement('textarea')
-    dummy.innerText = userLink.innerText
+    dummy.innerText = `Do you remember how we met? ${userLink.innerText}`
     document.body.appendChild(dummy)
     dummy.select()
     dummy.setSelectionRange(0, 99999)
     document.execCommand("copy")
     document.body.removeChild(dummy)
+    copyLink.innerText = "Copied!!"
+    setTimeout(() => {
+        copyLink.innerText = "Copy"
+    }, 4000)
 })
 
 // To open and close messages

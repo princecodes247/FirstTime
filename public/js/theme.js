@@ -1,6 +1,6 @@
 let themeClicked = false;
-const theme = document.getElementById('theme');
-const dd2 = document.getElementById('dropdown2');
+// const theme = document.getElementById('theme');
+//const dd2 = document.getElementById('dropdown2');
 theme.addEventListener(onclick, function a() {
   themeOpen = !(themeOpen);
   if (themeOpen) {

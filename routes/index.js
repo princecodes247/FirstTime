@@ -36,11 +36,10 @@ router.get("/user/:username", (req, res) => {
     .catch(err => console.log(err))
 });
 router.post("/user/:username", (req, res) => {
-  console.log(req.params);
+
   User.findOne({ username: req.params.username }).then((person) => {
     if (person) {
       message = req.body
-      console.log(req.body);
       person.messages.push(message)
       person.save().then(
         res.json({
@@ -49,7 +48,7 @@ router.post("/user/:username", (req, res) => {
       )
         .catch(err => console.log(err))
     } else {
-      console.log("not found");
+
       res.json({
         message: "not found"
       })

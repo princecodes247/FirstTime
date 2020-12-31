@@ -244,6 +244,7 @@ body {
 
 .button {
   appearance: button;
+  writing-mode: horizontal-tb;
   -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
   color: -internal-light-dark(black, white);
@@ -601,7 +602,6 @@ div.main.submit > #submit {
   display: flex;
   flex-direction: column-reverse;
 }
-
 .message {
   text-align: left;
   margin: 10px auto 10px auto;

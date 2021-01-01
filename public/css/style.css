@@ -580,7 +580,6 @@ div.main.submit > #submit {
 
 #friendy-words h3::first-letter {
   text-transform: uppercase;
-  text-decoration: overline;
   color: var(--p-high);
 }
 .friendy-cover {

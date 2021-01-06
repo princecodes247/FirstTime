@@ -1,5 +1,3 @@
-
-
 // For the Link Section
 let userLinkCont = document.querySelector('#userlink')
 let copyLink = document.querySelector('#copyLink')
@@ -27,7 +25,9 @@ let skip = 0;
 let limit = 5;
 let loading = false;
 let finished = false;
-
+let messages = []
+const loadingElement = document.querySelector('.loading');
+const loadMoreElement = document.querySelector('#loadMore');
 document.addEventListener('scroll', () => {
     const rect = loadMoreElement.getBoundingClientRect();
     if (rect.top < window.innerHeight && !loading && !finished) {
@@ -37,40 +37,53 @@ document.addEventListener('scroll', () => {
 
 function loadMore() {
     skip += limit;
-    listAllMessages(false);
+    listMessages(false);
 }
 
-function listAllMessages(reset = true) {
+function listMessages(reset = true) {
     loading = true;
     if (reset) {
-        mewsElement.innerHTML = '';
+        console.log('ran');
+        document.querySelector('.messages').innerHTML = '';
         skip = 0;
         finished = false;
     }
+    for (let index = skip; index < skip + limit; index++) {
+        if (index < messages.length) {
+            createMessage(messages[index])
+        } else {
+            loadMoreElement.style.visibility = 'hidden';
+            finished = true;
+            break;
+        }
+    }
+    loadingElement.style.display = 'none';
+    loadMoreElement.style.visibility = 'visible';
+    loading = false;
 
 }
 
-function createMessages(messages) {
-    messages.forEach(message => {
-        let timeStamp = document.createElement('span')
-        //         <span id="time-stamp">
-        timeStamp.classList.add('time-stamp')
-        timeStamp.innerText = makeTimeStamp(message.timeStamp)
-        let openBtn = document.createElement('span')
-        openBtn.classList.add('open-btn')
-        openBtn.innerText = "Open"
-        //         <span class="open-btn">Open</span>
+function createMessage(message) {
 
-        let messageCont = document.createElement('div')
-        messageCont.classList.add('container')
-        messageCont.classList.add('message')
-        messageCont.classList.add('close-message')
-        messageCont.appendChild(timeStamp)
-        messageCont.appendChild(openBtn)
-        let questions = message.questionList.map(question => {
-            let questionLine = document.createElement('span')
-            questionLine.classList.add('question')
-            questionLine.innerHTML = `
+    let timeStamp = document.createElement('span')
+    //         <span id="time-stamp">
+    timeStamp.classList.add('time-stamp')
+    timeStamp.innerText = makeTimeStamp(message.timeStamp)
+    let openBtn = document.createElement('span')
+    openBtn.classList.add('open-btn')
+    openBtn.innerText = "Open"
+    //         <span class="open-btn">Open</span>
+
+    let messageCont = document.createElement('div')
+    messageCont.classList.add('container')
+    messageCont.classList.add('message')
+    messageCont.classList.add('close-message')
+    messageCont.appendChild(timeStamp)
+    messageCont.appendChild(openBtn)
+    let questions = message.questionList.map(question => {
+        let questionLine = document.createElement('span')
+        questionLine.classList.add('question')
+        questionLine.innerHTML = `
             <span class="question">
                 <p>
                     <b>Question:</b>
@@ -84,15 +97,13 @@ function createMessages(messages) {
 
             </span>
             `
-            messageCont.appendChild(questionLine)
+        messageCont.appendChild(questionLine)
 
 
-        })
-
-        document.querySelector('.messages').appendChild(messageCont)
     })
 
-    setupMessages()
+    document.querySelector('.messages').appendChild(messageCont)
+    setupMessage(messageCont)
 }
 
 function makeTimeStamp(target) {
@@ -137,23 +148,39 @@ function makeTimeStamp(target) {
         }
     }
 }
-//  for(messages){
-//     <div class="container message close-message">
 
-//         </span>
-//         <span class="open-btn">Open</span>
-//          
-//     </div>
-//      } 
 
-//
-// console.log(window.location.host);
+// Message behaviour
+
+function closeAll() {
+    let messages = document.querySelectorAll('.messages .message')
+    messages.forEach(message => {
+        message.classList.add("close-message")
+        let openBtn = message.querySelector('.open-btn')
+        openBtn.innerText = "Open"
+    })
+}
+
+function setupMessage(message) {
+    // To open and close messages
+    let openBtn = message.querySelector('.open-btn')
+    openBtn.addEventListener('click', () => {
+        if (openBtn.innerText === "Open") {
+            closeAll()
+            message.classList.remove("close-message")
+            openBtn.innerText = "Close"
+        } else {
+            message.classList.add("close-message")
+            openBtn.innerText = "Open"
+        }
+    })
+}
+
 fetch(`/messages`)
     .then(response => response.json())
     .then(result => {
-        createMessages(result.messages)
+        messages = result.messages
+        messages = messages.reverse()
+        listMessages()
     })
     .catch(err => console.log(err))
-
-
-    // Message behaviour

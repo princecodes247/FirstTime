@@ -69,6 +69,17 @@ router.get("/dashboard", ensureAuthenticated, (req, res) =>
   })
 );
 
+router.get("/messages", ensureAuthenticated, (req, res) =>
+  User.findOne({ username: req.user.username }).then((person) => {
+    if (person) {
+      res.json({
+        messages: person.messages
+      })
+    }
+  })
+    .catch(err => console.log(err))
+);
+
 
 //404
 // router.get("/*", (req, res) => res.render("404"));

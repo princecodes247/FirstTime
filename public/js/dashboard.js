@@ -51,6 +51,7 @@ function listMessages(reset = true) {
     for (let index = skip; index < skip + limit; index++) {
         if (index < messages.length) {
             createMessage(messages[index])
+            loadMoreElement.style.visibility = 'visible';
         } else {
             loadMoreElement.style.visibility = 'hidden';
             finished = true;
@@ -58,7 +59,7 @@ function listMessages(reset = true) {
         }
     }
     loadingElement.style.display = 'none';
-    loadMoreElement.style.visibility = 'visible';
+
     loading = false;
 
 }

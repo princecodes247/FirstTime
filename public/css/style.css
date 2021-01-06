@@ -599,7 +599,7 @@ div.main.submit > #submit {
   height: 100%;
   padding-top: 20px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 .message {
   text-align: left;
